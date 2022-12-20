@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Response;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -15,6 +18,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $query = DB::connection('mysql')->table('users')->get();
+        return response()->json($query, 200);
     }
 
     /**
