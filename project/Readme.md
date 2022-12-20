@@ -42,9 +42,37 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 php artisan key:generate
 ```
 
+# REMOVE FILE User.php 
+```zsh
+rm -rf /src/app/Model/User.php
+```
 # CREATE MODEL/CONTROLLER/MIGRATE/SEEDER
 ```php
 php artisan make:model User -mcfs --resource
+```
+# tambahkan database di dalam folder src/database/migration
+```php
+    $table->id();
+    $table->string('username');
+    $table->string('password');
+    $table->timestamps();
+```
+# tambahkan seedernya
+```php
+public function run()
+    {
+        $timestamp = \Carbon\Carbon::now()->toDateTimeString();
+        DB::table('users')->insert([
+            'username'  => 'client',
+            'password'  => Str::random(40),
+            'created_at' => $timestamp,
+            'updated_at' => $timestamp
+        ]);
+    }
+```
+# add schema db
+```php
+php artisan migrate
 ```
 
 # HOW TO ADD ROUTE in src/route/web.php
@@ -57,6 +85,8 @@ $router->group(['prefix' => 'api/v1/testing'], function() use ($router){
 	$router->put('/{id}', ['uses' => 'UserController@update']);
 });
 ```
+
+# 
 
 # INSPECT CONTAINER MYSQL
 ```zsh
