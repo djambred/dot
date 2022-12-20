@@ -32,5 +32,16 @@
 # CREATE MODEL/CONTROLLER/MIGRATE/SEEDER
 - php artisan make:model User -mcfs --resource
 
+# HOW TO ADD ROUTE in src/route/web.php
+```php
+$router->group(['prefix' => 'api/v1/testing'], function() use ($router){
+    $router->get('/', ['uses' => 'UserController@index']);
+	$router->post('/', ['uses' => 'UserController@create ']);
+	$router->get('/{id}', ['uses' => 'UserController@show']);
+	$router->delete('/{id}', ['uses' => 'UserController@destroy']);
+	$router->put('/{id}', ['uses' => 'UserController@update']);
+});
+```
+
 # INSPECT CONTAINER MYSQL
 - docker inspect mysql
