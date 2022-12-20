@@ -62,3 +62,8 @@ $router->group(['prefix' => 'api/v1/testing'], function() use ($router){
 ```zsh
 docker inspect mysql
 ```
+
+# STOP PROJECT AKHIR CONTAINER
+```zsh
+docker-compose down
+```
