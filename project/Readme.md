@@ -1,16 +1,17 @@
 # STEP MAKE A FOLDER
-- mkdir project
-- mkdir project/php
-- mkdir project/nginx
-- touch project/.env
-- touch project/docker-compose.yml
-- touch project/php/Dockerfile
-- touch project/php/docker-entrypoint.sh
-- touch project/php/www.conf
-- touch project/php/local.ini
-- touch project/nginx/default.conf
-- touch project/nginx/Dockerfile
-
+```zsh
+mkdir project
+mkdir project/php
+mkdir project/nginx
+touch project/.env
+touch project/docker-compose.yml
+touch project/php/Dockerfile
+touch project/php/docker-entrypoint.sh
+touch project/php/www.conf
+touch project/php/local.ini
+touch project/nginx/default.conf
+touch project/nginx/Dockerfile
+```
 # HOW TO RUN
 - docker-compose up -d --build
 
