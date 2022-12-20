@@ -13,16 +13,22 @@ touch project/nginx/default.conf
 touch project/nginx/Dockerfile
 ```
 # HOW TO RUN
-```sh
+```zsh
 docker-compose up -d --build
 ```
 
 # EXECUTE CONTAINER
-- docker exec -it project_akhir bash
+```zsh
+docker exec -it project_akhir bash
+```
 
 # HOW TO MAKE A PROJECT IN SRC
-- composer create-project --prefer-dist laravel/lumen .
-- composer require flipbox/lumen-generator
+```php
+composer create-project --prefer-dist laravel/lumen .
+```
+```php
+composer require flipbox/lumen-generator
+```
 
 # ADD TO src/bootstrap/app.php
 ```php
@@ -32,10 +38,14 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 ```
 
 # GENERATE KEY
-- php artisan key:generate
+```php
+php artisan key:generate
+```
 
 # CREATE MODEL/CONTROLLER/MIGRATE/SEEDER
-- php artisan make:model User -mcfs --resource
+```php
+php artisan make:model User -mcfs --resource
+```
 
 # HOW TO ADD ROUTE in src/route/web.php
 ```php
@@ -49,4 +59,6 @@ $router->group(['prefix' => 'api/v1/testing'], function() use ($router){
 ```
 
 # INSPECT CONTAINER MYSQL
-- docker inspect mysql
+```zsh
+docker inspect mysql
+```
