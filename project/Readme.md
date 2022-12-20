@@ -22,9 +22,9 @@
 - composer require flipbox/lumen-generator
 
 # ADD TO src/bootstrap/app.php
-$app->withFacades();
-$app->withEloquent();
-$app->registe(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+- $app->withFacades();
+- $app->withEloquent();
+- $app->registe(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
 # GENERATE KEY
 - php artisan key:generate
