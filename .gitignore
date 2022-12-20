@@ -1,2 +1,4 @@
 pert4/mariadb
 pert4/mariadb/*
+project/src/vendor/
+project/src/vendor/*
