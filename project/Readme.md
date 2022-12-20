@@ -13,7 +13,9 @@ touch project/nginx/default.conf
 touch project/nginx/Dockerfile
 ```
 # HOW TO RUN
-- docker-compose up -d --build
+```sh
+docker-compose up -d --build
+```
 
 # EXECUTE CONTAINER
 - docker exec -it project_akhir bash
@@ -26,7 +28,7 @@ touch project/nginx/Dockerfile
 ```php
 $app->withFacades();
 $app->withEloquent();
-$app->registe(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 ```
 
 # GENERATE KEY
