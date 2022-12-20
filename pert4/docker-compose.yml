@@ -1,0 +1,46 @@
+version : '3'
+
+services:
+
+  dot_db:
+    image: mariadb:10.2
+    container_name: mysql_dot
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./mariadb:/var/lib/mysql
+      - ./conf.d:/etc/mysql/conf.d:ro
+    environment:
+      MYSQL_USER: djambred
+      MYSQL_PASSWORD: p455w0rd1!.
+      MYSQL_ROOT_PASSWORD: p455w0rd
+      TZ: Asia/Jakarta
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+  lumen_php:
+    build:
+      context: ./php
+    image: "${COMPOSE_PROJECT_NAME}/${REPOSITORY_NAME}_php:${IMAGE_TAG}"
+    container_name: "${REPOSITORY_NAME}_php"
+    hostname: "lumen-php"
+    volumes:
+      - ./src:/var/www/html
+      - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    working_dir: /var/www/html
+
+  lumen_nginx:
+    build:
+      context: ./nginx
+    image: "${COMPOSE_PROJECT_NAME}/${REPOSITORY_NAME}_nginx:${IMAGE_TAG}"
+    container_name: "${REPOSITORY_NAME}_nginx"
+    hostname: "lumen-nginx"
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - lumen_php
