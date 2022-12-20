@@ -1,5 +1,6 @@
 # STEP MAKE A FOLDER
 ```zsh
+cd /root
 mkdir project
 mkdir project/php
 mkdir project/nginx
